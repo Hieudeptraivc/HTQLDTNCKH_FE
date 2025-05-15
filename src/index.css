@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@theme {
+  --font-poppins: 'Poppins', sans-serif;
+  --font-montserrat: 'Montserrat', san-serif;
+}
+@layer components {
+  .spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid theme(--color-black);
+    border-right-color: theme(--color-white);
+    animation: rotate 1s infinite linear;
+  }
+
+  .spinner-mini {
+    margin: 0;
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 3px solid theme(--color-white);
+    border-right-color: transparent;
+    animation: rotate 1s infinite linear;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}
+.grid-cols-sinhVien {
+  grid-template-columns: 2fr 1.5fr 1.2fr 2.7fr 1fr 1fr 0.3fr;
+}
+.grid-cols-giangVien {
+  grid-template-columns: 2.2fr 1.3fr 1.2fr 2.5fr 0.2fr 1.2fr 1fr 0.3fr;
+}
+.grid-cols-canBoKhoa {
+  grid-template-columns: 2fr 0.1fr 1.5fr 1.2fr 0.1fr 2fr 0.1fr 1.2fr 1fr 0.3fr;
+}
+.grid-cols-khoa {
+  grid-template-columns: 5fr 5fr 0.2fr;
+}
+.grid-cols-taiKhoan {
+  grid-template-columns: 3fr 1.5fr 1.2fr 0.2fr 1fr 1.2fr 1fr 0.3fr;
+}
+.grid-cols-deTai {
+  grid-template-columns: 2.3fr 0.1fr 1.2fr 1.2fr 1.5fr 1.2fr 0.2fr 1fr 0.3fr;
+}
+.grid-cols-baoCaoTienDo {
+  grid-template-columns: 3.4fr 1fr 1.2fr 1.2fr 0.7fr 1fr 1fr 0.3fr;
+}
+.grid-cols-baoCao {
+  grid-template-columns: 3fr 0.2fr 2.5fr 0.2fr 2fr 0.1fr 1.2fr 1.3fr 1fr 0.3fr;
+}
