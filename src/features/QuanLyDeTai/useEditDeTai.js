@@ -34,9 +34,9 @@ export function useEditDeTai() {
       queryClient.invalidateQueries(['detai', deTai._id]);
       toast.success('Bạn vừa chỉnh sửa đề tài thành công');
       if (acc?.vaiTro === 'Cán bộ khoa') {
-        navigate('/can-bo-khoa/quan-ly-de-tai');
+        navigate(`/can-bo-khoa/quan-ly-de-tai/${deTai._id}/detail`);
       } else if (acc?.vaiTro === 'Sinh viên')
-        navigate('/sinh-vien/quan-ly-de-tai');
+        navigate(`/sinh-vien/quan-ly-de-tai/${deTai._id}/detail`);
     },
     onError: (err) => toast.error(err.message),
   });
