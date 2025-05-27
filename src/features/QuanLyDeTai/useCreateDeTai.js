@@ -24,7 +24,7 @@ export function useCreateDeTai() {
       const svId = deTai?.sinhVien?.map((sv) => sv.sinhVienId) || [];
       const gvId = deTai?.giangVien?.map((sv) => sv.giangVienId) || [];
       createThongBao({
-        message: `${acc.vaiTro} ${user.ten} vừa tạo mới một đề tài ${deTai?.ten}.`,
+        message: `${acc.vaiTro} ${user.ten} vừa tạo mới một đề tài ${deTai?.ten}`,
         sinhViens: svId,
         giangViens: gvId,
         canBoKhoas: dsCanBoKhoaId,

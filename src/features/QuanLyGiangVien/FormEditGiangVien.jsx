@@ -160,7 +160,7 @@ function FormEditGiangVien({ giangVien = {} }) {
         <div className="font-montserrat flex">
           <span className="w-23 font-bold text-red-600">Lưu ý:</span>
           <p>
-            Sau khi nhập thông tin sinh viên thì tài khoản giảng viên sẽ được
+            Sau khi nhập thông tin giảng viên thì tài khoản giảng viên sẽ được
             tạo tự động với <strong>tên tài khoản</strong> là email và{' '}
             <strong>mật khẩu</strong> là ngày sinh của giảng viên.{' '}
             <strong>Ví dụ:</strong> Tên tài khoản: nvanhieu29@gmail.com. Mật

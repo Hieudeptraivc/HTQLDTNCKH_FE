@@ -15,7 +15,7 @@ import { formatDateHour } from '../../utils/formatToVietNamDate';
 import { useRestartDeTai } from './useRestartStatusDeTai';
 
 function DeTaiDetailView({ deTai = {}, acc }) {
-  console.log(deTai);
+  // console.log(deTai);
   const navigate = useNavigate();
   const location = useLocation();
   const basePath = location.pathname.split('/').slice(0, 3).join('/');

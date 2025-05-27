@@ -56,7 +56,7 @@ import ForgotPassword from './page/ForgotPassword';
 import ResetPassword from './page/ResetPassword';
 import PageNotFound from './page/PageNotFound';
 import CanBoKhoaMe from './features/QuanLyCaNhan/CanBoKhoaMe';
-import ErrorFallback from './ui/ErrorFallBack';
+import ErrorFallback from './ui/ErrorFallback';
 import { ErrorBoundary } from 'react-error-boundary';
 import DeTaiCapTruong from './page/DeTaiCapTruong';
 

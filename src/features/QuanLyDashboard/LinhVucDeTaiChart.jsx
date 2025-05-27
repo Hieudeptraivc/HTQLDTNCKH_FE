@@ -12,7 +12,7 @@ import {
 import _ from 'lodash';
 
 const LinhVucDeTaiChart = ({ allDeTai }) => {
-  console.log('allDeTai', allDeTai);
+  // console.log('allDeTai', allDeTai);
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {

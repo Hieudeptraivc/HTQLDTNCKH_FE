@@ -19,7 +19,7 @@ function CanBoKhoaDetail() {
   const formattedNgaySinh = canBoKhoa.ngaySinh
     ? canBoKhoa.ngaySinh.split('T')[0]
     : '';
-  console.log(taiKhoan);
+  // console.log(taiKhoan);
   return (
     <div className="items-center antialiased">
       <p className="font-poppins w-full text-xl font-semibold">

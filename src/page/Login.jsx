@@ -1,23 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../assets/logo.png';
 import loginBg from '../assets/loginBg.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useLogin } from '../auth/useLogin';
 import SpinnerMini from '../ui/SpinnerMini';
 import Label from '../ui/Label';
+import { useAccount } from '../auth/useAccount';
 
 const Login = function () {
+  const [checkedLogin, setCheckedLogin] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login, isPending } = useLogin();
-
+  const navigate = useNavigate();
   function handleLogin(e) {
     e.preventDefault();
     // console.log(username, password);
     if (!username || !password) return;
     login({ username, password });
   }
+  const { data, isAuthenticated } = useAccount({ enabled: !checkedLogin });
+  const acc = data?.acc;
+  useEffect(() => {
+    if (isAuthenticated && acc.vaiTro) {
+      switch (acc.vaiTro) {
+        case 'Admin':
+          navigate('/admin/dashboard');
+          break;
+        case 'Cán bộ khoa':
+          navigate('/can-bo-khoa/dashboard');
+          break;
+        case 'Giảng viên':
+          navigate('/giang-vien/quan-ly-de-tai');
+          break;
+        case 'Sinh viên':
+          navigate('/sinh-vien/quan-ly-de-tai');
+          break;
+        default:
+          navigate('/login');
+      }
+    }
+    if (!checkedLogin) setCheckedLogin(true); // đảm bảo không gọi lại nữa
+  }, [isAuthenticated, acc, checkedLogin, navigate]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#f0f2f5] p-4">
@@ -41,6 +66,7 @@ const Login = function () {
               <input
                 id="username"
                 type="username"
+                disabled={isPending}
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Nhập tên tài khoản"
@@ -53,6 +79,7 @@ const Login = function () {
               </Label>
               <input
                 id="password"
+                disabled={isPending}
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

@@ -15,13 +15,13 @@ function LinhVuc() {
   return (
     <div className="items-center">
       <p className="font-poppins w-full text-xl font-semibold">
-        Thông tin của Khoa
+        Thông tin của lĩnh vực
       </p>
       <div className="font-poppins mt-4 flex flex-row gap-4">
         <div className="w-full overflow-x-hidden rounded-lg border border-gray-300 shadow-lg">
           <div className="flex w-full flex-row items-center justify-between bg-gray-200 px-4 py-2">
             <p className="flex gap-2">
-              Thông tin khoa:{' '}
+              Thông tin lĩnh vực:{' '}
               <span className="font-semibold">{linhVuc.ten}</span>
             </p>
             <Button

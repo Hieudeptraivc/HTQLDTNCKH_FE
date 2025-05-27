@@ -34,8 +34,8 @@ function GiangVienDetail() {
         <div className="w-full overflow-x-hidden rounded-lg border border-gray-300 shadow-lg">
           <div className="flex w-full flex-row items-center justify-between bg-gray-200 px-4 py-2">
             <p className="flex gap-2">
-              Thông tin giảng viên:{' '}
-              <span className="w-96 font-semibold">{giangVien.ten}</span>
+              <span>Thông tin giảng viên:</span>
+              <span className="font-semibold">{giangVien.ten}</span>
               <span
                 className={`font-montserrat flex items-center justify-center rounded-lg text-center text-[15px] font-medium ${giangVien.taiKhoan?.trangThai ? 'w-36 bg-green-600 text-green-100' : 'w-28 bg-red-600 text-red-100'} `}
               >

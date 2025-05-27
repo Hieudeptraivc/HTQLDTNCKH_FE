@@ -3,11 +3,12 @@ import { getCurrentUser } from '../services/apiAuth';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-export function useAccount() {
+export function useAccount({ enabled = true } = {}) {
   const navigate = useNavigate();
   const { isPending, data } = useQuery({
     queryKey: ['account'],
     queryFn: getCurrentUser,
+    enabled,
     retry: false,
     refetchOnWindowFocus: true,
     onError: (err) => {

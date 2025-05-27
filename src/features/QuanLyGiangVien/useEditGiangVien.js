@@ -25,6 +25,7 @@ export function useEditGiangVien() {
         giangViens: [giangVien._id],
       });
       queryClient.invalidateQueries(['giangvien', giangVien._id]);
+      queryClient.invalidateQueries(['giangviens']);
       toast.success('Cập nhật thành công giảng viên');
 
       navigate('/can-bo-khoa/quan-ly-giang-vien');
