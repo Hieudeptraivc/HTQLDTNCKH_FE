@@ -94,15 +94,17 @@ function MemberInformation({ acc, type = 'edit' }) {
                       <option value="Thành viên">Thành viên</option>
                     </select>
                   </div>
-                  <button
-                    disabled={!isEditTv}
-                    onClick={() => removeSinhVien(sv._id)}
-                  >
-                    <BiTrash
-                      className={`text-red-600 ${isEditTv ? 'hover:text-red-800' : ''}`}
-                      size="20"
-                    />
-                  </button>
+                  {type !== 'view' && isEditTv && (
+                    <button
+                      disabled={!isEditTv}
+                      onClick={() => removeSinhVien(sv._id)}
+                    >
+                      <BiTrash
+                        className={`text-red-600 ${isEditTv ? 'hover:text-red-800' : ''}`}
+                        size="20"
+                      />
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
@@ -155,15 +157,17 @@ function MemberInformation({ acc, type = 'edit' }) {
                       </option>
                     </select>
                   </div>
-                  <button
-                    disabled={!isEditTv}
-                    onClick={() => removeGiangVienMongMuon(gv._id)}
-                  >
-                    <BiTrash
-                      className={`text-red-600 ${isEditTv ? 'hover:text-red-800' : ''}`}
-                      size="20"
-                    />
-                  </button>
+                  {type !== 'view' && isEditTv && (
+                    <button
+                      disabled={!isEditTv}
+                      onClick={() => removeGiangVienMongMuon(gv._id)}
+                    >
+                      <BiTrash
+                        className={`text-red-600 ${isEditTv ? 'hover:text-red-800' : ''}`}
+                        size="20"
+                      />
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
@@ -221,15 +225,19 @@ function MemberInformation({ acc, type = 'edit' }) {
                       </option>
                     </select>
                   </div>
-                  <button
-                    disabled={acc?.vaiTro === 'Cán bộ khoa' ? !isEditTv : true}
-                    onClick={() => removeGiangVien(gv._id)}
-                  >
-                    <BiTrash
-                      className={`text-red-600 ${isEditTv ? 'hover:text-red-800' : ''}`}
-                      size="20"
-                    />
-                  </button>
+                  {type !== 'view' && isEditTv && (
+                    <button
+                      disabled={
+                        acc?.vaiTro === 'Cán bộ khoa' ? !isEditTv : true
+                      }
+                      onClick={() => removeGiangVien(gv._id)}
+                    >
+                      <BiTrash
+                        className={`text-red-600 ${isEditTv ? 'hover:text-red-800' : ''}`}
+                        size="20"
+                      />
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
