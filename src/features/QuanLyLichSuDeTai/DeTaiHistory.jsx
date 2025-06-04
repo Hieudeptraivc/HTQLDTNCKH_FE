@@ -30,6 +30,7 @@ const fetchHistoryList = async (deTaiId) => {
     credentials: 'include',
   });
   if (!res.ok) throw new Error('Không thể lấy dữ liệu lịch sử');
+
   return await res.json();
 };
 
@@ -130,6 +131,7 @@ const DisplayArray = ({ title, array, displayFields }) => {
 
 // Component hiển thị thay đổi
 const ChangeItem = ({ change }) => {
+  console.log(change);
   // Xử lý hiển thị dựa trên loại thay đổi
   if (change.change) {
     // Thay đổi phức tạp (thêm/xóa/sửa người)
@@ -314,7 +316,7 @@ const FullDetailModal = ({ duLieuCu, duLieuMoi, onClose }) => {
                 <div className="rounded-lg bg-gray-50 p-4">
                   <DisplayArray
                     title="Giảng viên"
-                    array={duLieuMoi.giangVienMongMuon}
+                    array={duLieuCu.giangVienMongMuon}
                     displayFields={[
                       { label: 'Tên', path: 'giangVienMongMuonId.ten' },
                       { label: 'Học vị', path: 'giangVienMongMuonId.hocVi' },
