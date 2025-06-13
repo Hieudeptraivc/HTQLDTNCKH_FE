@@ -9,26 +9,27 @@ export function useDsSinhVien() {
   const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
 
-  // console.log(searchParams.toString());
-  const {
-    sort: sortParam,
-    pageSv: pageParam,
-    pageGv,
-    keywordSv,
-    keywordGv,
-    ...filterParams
-  } = Object.fromEntries([...searchParams]);
+  const sort = searchParams.get('sort') || '';
+  const page = Number(searchParams.get('pageSv')) || 1;
+  const keyword = searchParams.get('keywordSv') || '';
 
-  // console.log(sortParam, pageParam, filterParams);
+  // Bỏ các param không liên quan đến filter ra
+  const filterParams = Object.fromEntries(
+    [...searchParams].filter(
+      ([key]) =>
+        ![
+          'sort',
+          'pageGv',
+          'pageSv',
+          'keywordGv',
+          'keywordSv',
+          'page',
+        ].includes(key),
+    ),
+  );
 
-  const filter = buildSingleFilter({ keyword: keywordSv, ...filterParams });
+  const filter = buildSingleFilter({ keyword, ...filterParams });
 
-  // Sắp xếp
-  const sort = sortParam || '';
-  // Phân trang
-  const page = !pageParam ? 1 : Number(pageParam);
-
-  // QUERY
   const {
     isPending,
     data: { dsSinhVien, totalCount } = {},
@@ -38,8 +39,8 @@ export function useDsSinhVien() {
     queryFn: () => getDsSinhVien({ filter, sort, page }),
   });
 
-  // PREFETCH - chuẩn bị sẵn dữ liệu trang trước / sau
   const pageCount = Math.ceil(totalCount / PAGE_SIZE);
+
   if (page < pageCount)
     queryClient.prefetchQuery({
       queryKey: ['dssinhvien', filter, sort, page + 1],
