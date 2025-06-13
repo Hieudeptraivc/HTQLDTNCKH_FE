@@ -9,24 +9,26 @@ export function useDsGiangVien() {
   const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
 
-  // console.log(searchParams.toString());
-  const {
-    sort: sortParam,
-    pageGv: pageParam,
-    pageSv,
-    keywordGv,
-    keywordSv,
-    ...filterParams
-  } = Object.fromEntries([...searchParams]);
+  const sort = searchParams.get('sort') || '';
+  const page = Number(searchParams.get('pageGv')) || 1;
+  const keyword = searchParams.get('keywordGv') || '';
 
-  const filter = buildSingleFilter({ keyword: keywordGv, ...filterParams });
+  const filterParams = Object.fromEntries(
+    [...searchParams].filter(
+      ([key]) =>
+        ![
+          'sort',
+          'pageGv',
+          'pageSv',
+          'keywordGv',
+          'keywordSv',
+          'page',
+        ].includes(key),
+    ),
+  );
 
-  // Sắp xếp
-  const sort = sortParam || '';
-  // Phân trang
-  const page = !pageParam ? 1 : Number(pageParam);
+  const filter = buildSingleFilter({ keyword, ...filterParams });
 
-  // QUERY
   const {
     isPending,
     data: { dsGiangVien, totalCount } = {},
@@ -36,8 +38,8 @@ export function useDsGiangVien() {
     queryFn: () => getDsGiangVien({ filter, sort, page }),
   });
 
-  // PREFETCH - chuẩn bị sẵn dữ liệu trang trước / sau
   const pageCount = Math.ceil(totalCount / PAGE_SIZE);
+
   if (page < pageCount)
     queryClient.prefetchQuery({
       queryKey: ['dsgiangvien', filter, sort, page + 1],
