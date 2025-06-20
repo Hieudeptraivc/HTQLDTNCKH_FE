@@ -67,6 +67,7 @@ const Login = function () {
                 id="username"
                 type="username"
                 disabled={isPending}
+                defaultValue={'testsystem@gmail.com'}
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Nhập tên tài khoản"
@@ -80,6 +81,7 @@ const Login = function () {
               <input
                 id="password"
                 disabled={isPending}
+                defaultValue={'29062003'}
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
