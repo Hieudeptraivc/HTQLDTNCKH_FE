@@ -10,8 +10,8 @@ import { useAccount } from '../auth/useAccount';
 
 const Login = function () {
   const [checkedLogin, setCheckedLogin] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('testsystem@gmail.com');
+  const [password, setPassword] = useState('29062003');
   const { login, isPending } = useLogin();
   const navigate = useNavigate();
   function handleLogin(e) {
@@ -67,7 +67,7 @@ const Login = function () {
                 id="username"
                 type="username"
                 disabled={isPending}
-                defaultValue={'testsystem@gmail.com'}
+            
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Nhập tên tài khoản"
@@ -81,7 +81,7 @@ const Login = function () {
               <input
                 id="password"
                 disabled={isPending}
-                defaultValue={'29062003'}
+                
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
